@@ -11,6 +11,7 @@ namespace OOP_lr4_1
     {
         public abstract void Draw(Graphics g);
         public abstract CShape GetRealObject();
+        public abstract Rectangle GetBoundingBox();
         
     }
 }

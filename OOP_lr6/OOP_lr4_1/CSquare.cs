@@ -40,5 +40,10 @@ namespace OOP_lr4_1
         {
             a += da;
         }
+
+        public override Rectangle GetBoundingBox()
+        {
+            return new Rectangle(x - a / 2, y - a / 2, a, a);
+        }
     }
 }

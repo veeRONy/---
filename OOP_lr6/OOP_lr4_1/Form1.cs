@@ -98,7 +98,7 @@ namespace OOP_lr4_1
             // если зажат Ctrl и кликнули ЛКМ
             if (chbCtrl.Checked && e.Button == MouseButtons.Left)
             {
-                
+                // делаем выделенный объект декоратором
                     
             }
             else
@@ -119,8 +119,18 @@ namespace OOP_lr4_1
                         shape = new CCircle(e.X, e.Y, currentColor);
                         break;
                 }
+                // заворачиваем новый объект в декоратор
+                CDecorator decorator = new CDecorator(shape);
 
-                shapes.pushBack(shape);
+                // заменяем все декораторы из списка реальными объектами
+                for(int i = 0; i < shapes.getSize(); ++i)
+                {
+                    var realObject = shapes.getObject(i).GetRealObject();  
+                    shapes.setObject(i, realObject);
+                }
+
+                // добавляем декоратор в список
+                shapes.pushBack(decorator);
 
             }
             // обновляем pictureBox (вызывается событие Paint)

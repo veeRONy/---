@@ -66,5 +66,14 @@ namespace OOP_lr4_1
             points[2].X = x;
             points[2].Y = y - Convert.ToInt32(a * Math.Sqrt(3) / 3);
         }
+
+        public override Rectangle GetBoundingBox()
+        {
+            int minX = points.Min(p => p.X);
+            int minY = points.Min(p => p.Y);
+            int maxX = points.Max(p => p.X);
+            int maxY = points.Max(p => p.Y);
+            return new Rectangle(minX, minY, maxX - minX, maxY - minY);
+        }
     }
 }

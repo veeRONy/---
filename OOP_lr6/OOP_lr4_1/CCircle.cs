@@ -51,5 +51,10 @@ namespace OOP_lr4_1
         {
             return this;
         }
+
+        public override Rectangle GetBoundingBox()
+        {
+            return new Rectangle(x - r, y - r, 2 * r, 2 * r);
+        }
     }
 }

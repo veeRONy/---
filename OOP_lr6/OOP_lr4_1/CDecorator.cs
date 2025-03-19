@@ -13,7 +13,6 @@ namespace OOP_lr4_1
     {
         private CShape shape;
         private Pen pen;
-        private int x, y, a;
         public CDecorator(CShape shape)
         {
             pen = new Pen(Color.Black);
@@ -22,13 +21,19 @@ namespace OOP_lr4_1
         }
         public override void Draw(Graphics g)
         {
-            g.DrawRectangle(pen, x - a / 2 - 10, y - a / 2 - 10, a + 20, a + 20);
+            Rectangle boundingBox = shape.GetRealObject().GetBoundingBox();
+            g.DrawRectangle(pen, boundingBox.X - 10, boundingBox.Y - 10, boundingBox.Width + 20, boundingBox.Height + 20);
             shape.Draw(g);
         }
 
         public override CShape GetRealObject()
         {
             return shape.GetRealObject();
+        }
+
+        public override Rectangle GetBoundingBox()
+        {
+            return shape.GetBoundingBox();
         }
     }
 }
