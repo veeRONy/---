@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_lr4_1
 {
-    internal class CSquare : CShape
+    internal class CSquare : CShape, IClickable, IMovable
     {
         private int x, y, a; // a - длина стороны квадрата
         private Pen pen;
@@ -41,9 +41,27 @@ namespace OOP_lr4_1
             a += da;
         }
 
+
         public override Rectangle GetBoundingBox()
         {
             return new Rectangle(x - a / 2, y - a / 2, a, a);
+        }
+
+        public bool isClicked(int X, int Y)
+        {
+            if ((X >= x - a / 2) && (X <= x + a / 2) && (Y >= y - a / 2) && (Y <= y + a / 2))
+                return true;
+            return false;
+        }
+
+        public bool CanMoveX(int dx, int width)
+        {
+            return ((x + dx - a / 2) >= 0 && (x + dx + a / 2) < width);
+        }
+
+        public bool CanMoveY(int dy, int height)
+        {
+            return ((y - a/2 + dy) >= 0 && (y + dy + a/2) < height);
         }
     }
 }

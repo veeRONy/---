@@ -16,7 +16,7 @@ namespace OOP_lr4_1
         MyStorage<CShape> shapes;
         Color currentColor;
         string currentShape;
-        int dx = 5, dy = 5, da = 5;
+        int dx = 1, dy = 1, da = 5;
 
         public frmMain()
         {
@@ -35,45 +35,88 @@ namespace OOP_lr4_1
             else if(e.KeyCode == Keys.Delete)
             {
                 // те объекты, которые являются декораторами, удаляем
-
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    if (shapes.getObject(i) is CDecorator)
+                    {
+                        shapes.erase(i);
+                        --i;
+                    }
+                }
 
                 // последний объект в списке делаем декоратором (если не пустой список)
-
+                if (shapes.getSize() != 0)
+                {
+                    CDecorator decorator = new CDecorator(shapes.last());
+                    shapes.setObject(shapes.getSize()-1, decorator);
+                }
 
                 // обновляем pictureBox (вызывается событие Paint)
-                pictureBox.Invalidate();
+                //pictureBox.Invalidate();
             }
-            else if(e.KeyCode == Keys.Up)
+            else if(e.KeyCode == Keys.W)
             {
-                // те, которые декорированы, двигаем
-
-
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                // те, которые декорированы, двигаем
-
-            }
-            else if (e.KeyCode == Keys.Left)
-            {
-                // те, которые декорированы, двигаем
+                // те, которые декорированы, двигаем вверх
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    if(shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveY(-dy, pictureBox.Height))
+                    {
+                        movable.Move(0, -dy);
+                    }
+                }
 
             }
-            else if (e.KeyCode == Keys.Right)
+            else if (e.KeyCode == Keys.S)
+            {
+                // те, которые декорированы, двигаем вниз
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveY(dy, pictureBox.Height))
+                    {
+                        movable.Move(0, dy);
+                    }
+                }
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                // те, которые декорированы, двигаем влево
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveX(-dx, pictureBox.Width))
+                    {
+                        movable.Move(-dx, 0);
+                    }
+                }
+            }
+            else if (e.KeyCode == Keys.D)
             {
                 // те, которые декорированы, двигаем
-
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveX(dx, pictureBox.Width))
+                    {
+                        movable.Move(dx, 0);
+                    }
+                }
             }
             else if (e.KeyCode == Keys.OemMinus)
             {
                 // те, которые декорированы, уменьшаем
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
 
+                }
             }
             else if (e.KeyCode == Keys.Oemplus)
             {
                 // те, которые декорированы, увеличиваем
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
 
+                }
             }
+
+            pictureBox.Invalidate();
         }
 
         private void frmMain_KeyUp(object sender, KeyEventArgs e)
@@ -98,8 +141,23 @@ namespace OOP_lr4_1
             // если зажат Ctrl и кликнули ЛКМ
             if (chbCtrl.Checked && e.Button == MouseButtons.Left)
             {
-                // делаем выделенный объект декоратором
+                // делаем объект, на который кликнули, декоратором
+                for (int i = 0; i < shapes.getSize(); ++i)
+                {
+                    var shape = shapes.getObject(i).GetRealObject();
+                    if (shape is IClickable clickable && clickable.isClicked(e.X, e.Y))
+                    {
+                        // Обработка клика
+                        CDecorator decorator = new CDecorator(shape);
+                        shapes.setObject(i, decorator);
+
+                        // если включено выделение только одного круга, то прерываем цикл
+                        // иначе продолжаем выделять те круги, на которые кликнули
+                        if (chbSelectOnlyOne.Checked == true)
+                            break;
+                    }
                     
+                }
             }
             else
             {

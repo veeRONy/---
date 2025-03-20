@@ -31,21 +31,21 @@
             this.chbCtrl = new System.Windows.Forms.CheckBox();
             this.chbSelectOnlyOne = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuBtnCircle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnSquare = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnTriangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBtnColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.красныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.синийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.зеленыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.желтыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.черныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorRed = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorBlue = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorYellow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorBlack = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.красныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.синийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зеленыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.желтыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.черныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -85,20 +85,6 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(13, 100);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(856, 397);
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            this.pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseClick);
-            // 
             // menuBtnCircle
             // 
             this.menuBtnCircle.AutoSize = false;
@@ -134,6 +120,60 @@
             this.menuBtnColor.Name = "menuBtnColor";
             this.menuBtnColor.Size = new System.Drawing.Size(56, 32);
             this.menuBtnColor.Text = "Цвет";
+            // 
+            // menuColorRed
+            // 
+            this.menuColorRed.Image = global::OOP_lr4_1.Properties.Resources.square_red;
+            this.menuColorRed.Name = "menuColorRed";
+            this.menuColorRed.Size = new System.Drawing.Size(154, 26);
+            this.menuColorRed.Text = "Красный";
+            this.menuColorRed.Click += new System.EventHandler(this.menuColorRed_Click);
+            // 
+            // menuColorBlue
+            // 
+            this.menuColorBlue.Image = global::OOP_lr4_1.Properties.Resources.square_blue;
+            this.menuColorBlue.Name = "menuColorBlue";
+            this.menuColorBlue.Size = new System.Drawing.Size(154, 26);
+            this.menuColorBlue.Text = "Синий";
+            this.menuColorBlue.Click += new System.EventHandler(this.menuColorBlue_Click);
+            // 
+            // menuColorYellow
+            // 
+            this.menuColorYellow.Image = global::OOP_lr4_1.Properties.Resources.square_yellow;
+            this.menuColorYellow.Name = "menuColorYellow";
+            this.menuColorYellow.Size = new System.Drawing.Size(154, 26);
+            this.menuColorYellow.Text = "Желтый";
+            this.menuColorYellow.Click += new System.EventHandler(this.menuColorYellow_Click);
+            // 
+            // menuColorGreen
+            // 
+            this.menuColorGreen.Image = global::OOP_lr4_1.Properties.Resources.square_green;
+            this.menuColorGreen.Name = "menuColorGreen";
+            this.menuColorGreen.Size = new System.Drawing.Size(154, 26);
+            this.menuColorGreen.Text = "Зеленый";
+            this.menuColorGreen.Click += new System.EventHandler(this.menuColorGreen_Click);
+            // 
+            // menuColorBlack
+            // 
+            this.menuColorBlack.Image = global::OOP_lr4_1.Properties.Resources.square_black;
+            this.menuColorBlack.Name = "menuColorBlack";
+            this.menuColorBlack.Size = new System.Drawing.Size(154, 26);
+            this.menuColorBlack.Text = "Черный";
+            this.menuColorBlack.Click += new System.EventHandler(this.menuColorBlack_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(13, 100);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(856, 397);
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            this.pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseClick);
             // 
             // красныйToolStripMenuItem
             // 
@@ -173,46 +213,6 @@
             this.черныйToolStripMenuItem.Name = "черныйToolStripMenuItem";
             this.черныйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.черныйToolStripMenuItem.Text = "Черный";
-            // 
-            // menuColorRed
-            // 
-            this.menuColorRed.Image = global::OOP_lr4_1.Properties.Resources.square_red;
-            this.menuColorRed.Name = "menuColorRed";
-            this.menuColorRed.Size = new System.Drawing.Size(224, 26);
-            this.menuColorRed.Text = "Красный";
-            this.menuColorRed.Click += new System.EventHandler(this.menuColorRed_Click);
-            // 
-            // menuColorBlue
-            // 
-            this.menuColorBlue.Image = global::OOP_lr4_1.Properties.Resources.square_blue;
-            this.menuColorBlue.Name = "menuColorBlue";
-            this.menuColorBlue.Size = new System.Drawing.Size(224, 26);
-            this.menuColorBlue.Text = "Синий";
-            this.menuColorBlue.Click += new System.EventHandler(this.menuColorBlue_Click);
-            // 
-            // menuColorYellow
-            // 
-            this.menuColorYellow.Image = global::OOP_lr4_1.Properties.Resources.square_yellow;
-            this.menuColorYellow.Name = "menuColorYellow";
-            this.menuColorYellow.Size = new System.Drawing.Size(224, 26);
-            this.menuColorYellow.Text = "Желтый";
-            this.menuColorYellow.Click += new System.EventHandler(this.menuColorYellow_Click);
-            // 
-            // menuColorGreen
-            // 
-            this.menuColorGreen.Image = global::OOP_lr4_1.Properties.Resources.square_green;
-            this.menuColorGreen.Name = "menuColorGreen";
-            this.menuColorGreen.Size = new System.Drawing.Size(224, 26);
-            this.menuColorGreen.Text = "Зеленый";
-            this.menuColorGreen.Click += new System.EventHandler(this.menuColorGreen_Click);
-            // 
-            // menuColorBlack
-            // 
-            this.menuColorBlack.Image = global::OOP_lr4_1.Properties.Resources.square_black;
-            this.menuColorBlack.Name = "menuColorBlack";
-            this.menuColorBlack.Size = new System.Drawing.Size(224, 26);
-            this.menuColorBlack.Text = "Черный";
-            this.menuColorBlack.Click += new System.EventHandler(this.menuColorBlack_Click);
             // 
             // frmMain
             // 

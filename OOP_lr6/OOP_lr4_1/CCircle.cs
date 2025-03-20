@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OOP_lr4_1
 {
-    internal class CCircle : CShape
+    internal class CCircle : CShape, IClickable, IMovable
     {
         private int x, y, r;
         private Pen pen;
@@ -55,6 +55,16 @@ namespace OOP_lr4_1
         public override Rectangle GetBoundingBox()
         {
             return new Rectangle(x - r, y - r, 2 * r, 2 * r);
+        }
+
+        public bool CanMoveX(int dx, int width)
+        {
+            return ((x + dx - r) >= 0 && (x + dx + r) < width);
+        }
+
+        public bool CanMoveY(int dy, int height)
+        {
+            return ((y - r + dy) >= 0 && (y + dy + r) < height);
         }
     }
 }
