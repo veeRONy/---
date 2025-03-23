@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_lr4_1
 {
-    internal class CTriangle : CShape, IClickable, IMovable
+    internal class CTriangle : CShape, IClickable, IMovable, ISizable
     {
         private Point[] points = new Point[3]; // 3 точки треугольника
         private int a; // длина стороны треугольника
@@ -104,6 +104,15 @@ namespace OOP_lr4_1
         public bool CanMoveY(int dy, int height)
         {
             return ((points[2].Y + dy) >= 0 && (points[0].Y + dy) < height);
+        }
+
+        int minSize = 5;
+        public bool CanChangeSize(int da, int width, int height)
+        {
+            if (da < 0)
+                return (a + da >= minSize);
+            else
+                return ((points[2].Y - da >= 0) && (points[0].Y + da < height) && (points[0].X - da >= 0) && (points[1].X + da < width));
         }
     }
 }

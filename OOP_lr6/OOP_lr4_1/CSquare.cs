@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_lr4_1
 {
-    internal class CSquare : CShape, IClickable, IMovable
+    internal class CSquare : CShape, IClickable, IMovable, ISizable
     {
         private int x, y, a; // a - длина стороны квадрата
         private Pen pen;
@@ -62,6 +62,15 @@ namespace OOP_lr4_1
         public bool CanMoveY(int dy, int height)
         {
             return ((y - a/2 + dy) >= 0 && (y + dy + a/2) < height);
+        }
+
+        int minSize = 5;
+        public bool CanChangeSize(int da, int width, int height)
+        {
+            if (da < 0)
+                return (a + da >= minSize);
+            else
+                return ((y - a/2 - da >= 0) && (y + a/2 + da < height) && (x - a/2 - da >= 0) && (x + a/2 + da < width));
         }
     }
 }

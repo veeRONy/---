@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OOP_lr4_1
 {
-    internal class CCircle : CShape, IClickable, IMovable
+    internal class CCircle : CShape, IClickable, IMovable, ISizable
     {
         private int x, y, r;
         private Pen pen;
@@ -42,9 +42,9 @@ namespace OOP_lr4_1
             y += dy;
         }
 
-        public void ChangeSize(int dr)
+        public void ChangeSize(int da)
         {
-            r += dr;
+            r += da;
         }
 
         public override CShape GetRealObject()
@@ -66,5 +66,15 @@ namespace OOP_lr4_1
         {
             return ((y - r + dy) >= 0 && (y + dy + r) < height);
         }
+
+        int minSize = 5;
+        public bool CanChangeSize(int da, int width, int height)
+        {
+            if (da < 0)
+                return (r * 2 + da >= minSize);
+            else
+                return ((y-r-da >= 0) && (y+r + da < height) && (x-r - da >= 0) && (x+r+ da < width));
+        }
+        
     }
 }

@@ -16,7 +16,8 @@ namespace OOP_lr4_1
         MyStorage<CShape> shapes;
         Color currentColor;
         string currentShape;
-        int dx = 1, dy = 1, da = 5;
+        int dx = 1, dy = 1, da = 1;
+        int s = 5;
 
         public frmMain()
         {
@@ -59,10 +60,10 @@ namespace OOP_lr4_1
                 // те, которые декорированы, двигаем вверх
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-                    if(shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveY(-dy, pictureBox.Height))
-                    {
-                        movable.Move(0, -dy);
-                    }
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable)
+                        for (int j = 0; j < s; ++j)
+                            if (movable.CanMoveY(-dy, pictureBox.Height))                      
+                                movable.Move(0, -dy);
                 }
 
             }
@@ -71,10 +72,10 @@ namespace OOP_lr4_1
                 // те, которые декорированы, двигаем вниз
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveY(dy, pictureBox.Height))
-                    {
-                        movable.Move(0, dy);
-                    }
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable)
+                        for (int j = 0; j < s; ++j)
+                            if (movable.CanMoveY(dy, pictureBox.Height))
+                                movable.Move(0, dy);
                 }
             }
             else if (e.KeyCode == Keys.A)
@@ -82,10 +83,10 @@ namespace OOP_lr4_1
                 // те, которые декорированы, двигаем влево
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveX(-dx, pictureBox.Width))
-                    {
-                        movable.Move(-dx, 0);
-                    }
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable)
+                        for (int j = 0; j < s; ++j)
+                        if (movable.CanMoveX(-dx, pictureBox.Width))
+                            movable.Move(-dx, 0);
                 }
             }
             else if (e.KeyCode == Keys.D)
@@ -93,26 +94,32 @@ namespace OOP_lr4_1
                 // те, которые декорированы, двигаем
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable && movable.CanMoveX(dx, pictureBox.Width))
-                    {
-                        movable.Move(dx, 0);
-                    }
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is IMovable movable)
+                        for (int j = 0; j < s; ++j)
+                            if (movable.CanMoveX(dx, pictureBox.Width))
+                                movable.Move(dx, 0);
                 }
             }
-            else if (e.KeyCode == Keys.OemMinus)
+            else if (e.KeyCode == Keys.Z)
             {
                 // те, которые декорированы, уменьшаем
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is ISizable sizable)
+                        for (int j = 0; j < s; ++j)
+                            if (sizable.CanChangeSize(-da, pictureBox.Width, pictureBox.Height))
+                                sizable.ChangeSize(-da);
                 }
             }
-            else if (e.KeyCode == Keys.Oemplus)
+            else if (e.KeyCode == Keys.X)
             {
                 // те, которые декорированы, увеличиваем
                 for (int i = 0; i < shapes.getSize(); ++i)
                 {
-
+                    if (shapes.getObject(i) is CDecorator decorator && decorator.GetRealObject() is ISizable sizable)
+                        for (int j = 0; j < s; ++j)
+                            if (sizable.CanChangeSize(da, pictureBox.Width, pictureBox.Height))
+                                sizable.ChangeSize(da);
                 }
             }
 

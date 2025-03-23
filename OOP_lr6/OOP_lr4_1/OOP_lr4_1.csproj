@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="IClickable.cs" />
     <Compile Include="IMovable.cs" />
+    <Compile Include="ISizable.cs" />
     <Compile Include="MyStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
